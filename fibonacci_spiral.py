@@ -145,8 +145,47 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-o", "--output", type=str, help="Plot file name", required=False
+        "-o",
+        "--output",
+        type=str,
+        help="Plot file name",
+        required=False,
+        default="plot.png",
+    )
+
+    parser.add_argument(
+        "--no-label",
+        dest="labels",
+        help="Add a label to the center of each square with the side lenght",
+        action="store_false",
+        default=True,
+        required=False,
+    )
+
+    parser.add_argument(
+        "--no-arc",
+        dest="arc",
+        help="Plot arc of fibonacci spiral",
+        action="store_false",
+        default=True,
+        required=False,
+    )
+
+    parser.add_argument(
+        "-c" "--cmap",
+        dest="cmap",
+        type=str,
+        help="Colormap applied to fibonacci squares",
+        default="Blues",
+        required=False,
     )
 
     args = parser.parse_args()
-    plot_fibonacci_spiral(args.number_of_squares, filename=args.output)
+
+    plot_fibonacci_spiral(
+        args.number_of_squares,
+        numbers=bool(args.labels),
+        arc=bool(args.arc),
+        cmap=args.cmap,
+        filename=args.output,
+    )
