@@ -113,7 +113,16 @@ def plot_fibonacci_spiral(
         previous_side = side
 
     col = PatchCollection(rectangles, alpha=alpha, edgecolor="black")
-    col.set(array=np.asarray(range(number_of_squares + 1)), cmap=cmap)
+    try:
+        col.set(array=np.asarray(range(number_of_squares + 1)), cmap=cmap)
+    except ValueError:
+        print(
+            f" '{cmap}' is an invalid colormap, choose a valid one from "
+            "https://matplotlib.org/examples/color/colormaps_reference.html"
+            " - returning to default 'Blues' colormap"
+        )
+        col.set(array=np.asarray(range(number_of_squares + 1)), cmap="Blues")
+
     ax.add_collection(col)
     ax.set_aspect("equal", "box")
     ax.set_xticks([])
@@ -156,7 +165,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--no-label",
         dest="labels",
-        help="Add a label to the center of each square with the side lenght",
+        help="Remove label showing side lenght at the center of each square",
         action="store_false",
         default=True,
         required=False,
@@ -165,14 +174,15 @@ if __name__ == "__main__":
     parser.add_argument(
         "--no-arc",
         dest="arc",
-        help="Plot arc of fibonacci spiral",
+        help="Remove arc of fibonacci spiral",
         action="store_false",
         default=True,
         required=False,
     )
 
     parser.add_argument(
-        "-c" "--cmap",
+        "-c",
+        "--cmap",
         dest="cmap",
         type=str,
         help="Colormap applied to fibonacci squares",
