@@ -149,7 +149,6 @@ if __name__ == "__main__":
         "--number_of_squares",
         type=int,
         help="number of squares in spiral",
-        default=8,
         required=True,
     )
 
