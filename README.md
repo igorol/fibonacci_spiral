@@ -1,5 +1,10 @@
 # fibonacci_spiral
 
+Python script to generate a Fibonacci spiral plot, using matplotlib
+
+https://en.wikipedia.org/wiki/Fibonacci_number
+
+
 ```
 usage: python fibonacci_spiral.py [-h] -n NUMBER_OF_SQUARES [-o OUTPUT] [--no-label]
                            [--no-arc] [-c CMAP]
@@ -17,3 +22,7 @@ optional arguments:
   --no-arc              Remove arc of fibonacci spiral
   -c CMAP, --cmap CMAP  Colormap applied to fibonacci squares
 ```
+
+Example plot:
+
+![](./plot.png)
