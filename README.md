@@ -1,5 +1,6 @@
 # fibonacci_spiral
 
+```
 usage: python fibonacci_spiral.py [-h] -n NUMBER_OF_SQUARES [-o OUTPUT] [--no-label]
                            [--no-arc] [-c CMAP]
 
@@ -15,3 +16,4 @@ optional arguments:
                         square
   --no-arc              Remove arc of fibonacci spiral
   -c CMAP, --cmap CMAP  Colormap applied to fibonacci squares
+```
