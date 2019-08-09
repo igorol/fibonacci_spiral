@@ -70,8 +70,8 @@ def plot_fibonacci_spiral(
     for i, side in enumerate(fibs):
 
         rectangles.append(Rectangle([x, y], side, side))
-        if numbers and i > number_of_squares - 7:
-            ax.annotate(side, (x + 0.4 * side, y + 0.4 * side))
+        if numbers and i > number_of_squares - 8:
+            ax.annotate(side, xy=(x + 0.45 * side, y + 0.45 * side), fontsize=14)
 
         if arc:
             this_arc = Arc(
@@ -137,6 +137,7 @@ def plot_fibonacci_spiral(
     gr = str(fibs[i] / fibs[i - 1])
     if golden_ratio:
         plt.title(r"$\varphi$ = " + gr)
+    plt.tight_layout()
     plt.savefig(filename)
 
 
@@ -189,6 +190,16 @@ if __name__ == "__main__":
         required=False,
     )
 
+    parser.add_argument(
+        "-a",
+        "--alpha",
+        dest="alpha",
+        type=float,
+        help="Transparency",
+        default=0.95,
+        required=False,
+    )
+
     args = parser.parse_args()
 
     plot_fibonacci_spiral(
@@ -196,5 +207,6 @@ if __name__ == "__main__":
         numbers=bool(args.labels),
         arc=bool(args.arc),
         cmap=args.cmap,
+        alpha=args.alpha,
         filename=args.output,
     )
