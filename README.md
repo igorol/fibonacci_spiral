@@ -26,3 +26,4 @@ optional arguments:
 Example plot:
 
 ![](./plot.png)
+![](https://media.giphy.com/media/stVWPM4WEuFCTd28R1/giphy.gif)
