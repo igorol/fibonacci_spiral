@@ -4,6 +4,9 @@ import matplotlib as mpl
 from matplotlib.patches import Rectangle, Arc
 from matplotlib.collections import PatchCollection
 import numpy as np
+import eel
+from PIL import Image
+
 
 
 def fib(n):
@@ -134,79 +137,28 @@ def plot_fibonacci_spiral(
     ymax = np.max(ys) + fibs[np.argmax(ys)]
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(ymin, ymax)
+    
     gr = str(fibs[i] / fibs[i - 1])
     if golden_ratio:
         plt.title(r"$\varphi$ = " + gr)
     plt.tight_layout()
     plt.savefig(filename)
+    image = Image.open(filename)
+    image.show()
 
 
-if __name__ == "__main__":
-
-    description = "Creates a plot for a fibonacci spiral"
-    parser = argparse.ArgumentParser(description=description)
-    parser.add_argument(
-        "-n",
-        "--number_of_squares",
-        type=int,
-        help="number of squares in spiral",
-        required=True,
-    )
-
-    parser.add_argument(
-        "-o",
-        "--output",
-        type=str,
-        help="Plot file name",
-        required=False,
-        default="plot.png",
-    )
-
-    parser.add_argument(
-        "--no-label",
-        dest="labels",
-        help="Remove label showing side lenght at the center of each square",
-        action="store_false",
-        default=True,
-        required=False,
-    )
-
-    parser.add_argument(
-        "--no-arc",
-        dest="arc",
-        help="Remove arc of fibonacci spiral",
-        action="store_false",
-        default=True,
-        required=False,
-    )
-
-    parser.add_argument(
-        "-c",
-        "--cmap",
-        dest="cmap",
-        type=str,
-        help="Colormap applied to fibonacci squares",
-        default="Blues",
-        required=False,
-    )
-
-    parser.add_argument(
-        "-a",
-        "--alpha",
-        dest="alpha",
-        type=float,
-        help="Transparency",
-        default=0.95,
-        required=False,
-    )
-
-    args = parser.parse_args()
-
+#expose this to js
+@eel.expose
+def main(name_of_file, fib_numb, transparency, color, remove_labels, remove_arc, show_golden_ratio):
     plot_fibonacci_spiral(
-        args.number_of_squares,
-        numbers=bool(args.labels),
-        arc=bool(args.arc),
-        cmap=args.cmap,
-        alpha=args.alpha,
-        filename=args.output,
-    )
+    fib_numb,
+    numbers=remove_labels,
+    arc=remove_arc,
+    cmap=color,
+    alpha=transparency,
+    golden_ratio=show_golden_ratio,
+    filename=name_of_file,
+)
+#Start ui
+eel.init('ui')
+eel.start('index.html', size=(400, 720))
