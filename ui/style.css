@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+.container {
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    max-width: 213px;
+}
+html {
+    background-color: #101010;
+}
+.logo {
+    margin-top: 19px;
+    min-width: 147px;
+    min-height: 33px;
+    padding-bottom: 31px;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+input {
+    min-width: 199px;
+    min-height: 37px;
+    background-color: #272727;
+    border: solid 1px #046F35;
+    border-radius: 33px;
+    font-size: 12px;
+    padding-left: 12px;
+    color: #fff;
+}
+p {
+    text-align: left;
+    padding-bottom: 9px;
+    font-family: Inter;
+    color: #fff;
+}
+.input_numbers, .input_color, .input_name, .input_transparency{
+    padding-bottom: 17px;
+}
+
+button {
+    background-color: #046F35;
+    color: #fff;
+    padding: 12px 75px 12px 75px;
+    border-radius: 33px;
+    font-size: 14px;
+    transition: 400ms ease-out;
+    margin-bottom: 59px;
+    max-width: 213px;
+}
+input:active {
+    border: solid 1px #fff;
+}
+button:hover {
+    background-color: #439D6D;
+}
+button:active {
+    background-color: #142E20;
+}
+::placeholder,
+::-ms-input-placeholder,
+:-ms-input-placeholder {
+    color: #787878;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.colors {
+    min-width: 213px;
+    min-height: 37px;
+    background-color: #272727;
+    border: solid 1px #046F35;
+    border-radius: 33px;
+    font-size: 12px;
+    padding-left: 12px;
+    color: #fff;
+}
+input[type="checkbox"] {
+    max-width: 16px;
+    min-width: 16px;
+    min-height: 16px;
+}
+.checkbox_wrapper {
+    display: flex;
+    max-width: 213px;
+    padding-bottom: 10px;
+}
+label {
+    font-family: Inter;
+    color: #fff;
+    font-size: 10px;
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 3px;
+}
+.checkboxes {
+    padding-bottom: 30px;
+}
