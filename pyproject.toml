@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "fibonacci_spiral"
+version = "0.1.0"
+description = "Python script to plot Fibonacci spiral using Matplotlib"
+authors = ["Igor Oliveira <mail@igoroliveira.org>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "^3.6.0"
+Eel = "^0.14.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
